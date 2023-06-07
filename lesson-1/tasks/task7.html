@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 7</h1>
+	<p> З клавіатури вводяться вартість товару та кількість одиниць 3 товарів. Обчислити вартість кожного товару окремо
+		та загальну вартість. Вивести чек (як у супермаркеті) використовуючи елементи розмітки..</p>
+	<script>
+		//Вводимо необхідні дані
+		let applePrice = parseFloat(prompt('Вартість яблук'))
+		let appleAmount = parseInt(prompt('Кількість яблук'))
+		let orangePrice = parseFloat(prompt('Вартість апельсинів'))
+		let orangeAmount = parseInt(prompt('Кількість апельсинів'))
+		let bananaPrice = parseFloat(prompt('Вартість бананів'))
+		let bananaAmount = parseInt(prompt('Кількість бананів'))
+		//Знаходимо результат
+		let appleTotalPrice = applePrice * appleAmount
+		let orangeTotalPrice = orangePrice * orangeAmount
+		let bananaTotalPrice = bananaPrice * bananaAmount
+		let totalPrice = appleTotalPrice + orangeTotalPrice + bananaTotalPrice
+		// Виводимо результат
+		document.write(`Вартість яблук: ${appleTotalPrice.toFixed(2)} </br>
+			Вартість апельсинів: ${orangeTotalPrice.toFixed(2)} </br>
+			Вартість бананів: ${bananaTotalPrice.toFixed(2)} </br>
+			Загальна вартість товарів: ${totalPrice.toFixed(2)}
+		`)
+
+	</script>
+</body>
+
+</html>
