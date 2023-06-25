@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Визначити, чи є натуральне число N степенем числа 3 чи ні.</h1>
+	<script>
+		for (let i = 0; i < 5; i++) {
+			const num = parseInt(prompt('Введіть число'));
+			if (Math.log(num) / Math.log(3) % 1 === 0) {
+				document.write(`Число ${num} є степенем числа 3`);
+				break;
+			}
+		}
+	</script>
+
+</body>
+
+</html>
