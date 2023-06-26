@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1> Дано покази температур (довільна кількість). Розробити функцію, яка дозволить підрахувати кількість від’ємних
+		показів температури.</h1>
+	<script>
+		let amountTemperature = parseFloat(prompt('Введіть кількість показів відємних температур:'))
+		function getTemperature() {
+			let minTemp = -20
+			let maxTemp = 20
+			let result = 0
+			for (let i = 0; i < amountTemperature; i++) {
+				let randomTemp = minTemp + Math.floor(Math.random() * (maxTemp - minTemp + 1));
+				if (randomTemp < 0) {
+					document.write(`Температура : ${randomTemp} <br>`)
+					result++;
+				}
+			}
+			return result
+		}
+		let totalResult = getTemperature()
+		document.write(`кількість відємних
+		показів температури: ${totalResult}`)
+	</script>
+</body>
+
+</html>

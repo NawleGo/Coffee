@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1> Створити функцію, яка випадковим чином виводить на екран одне із 4 зображень (шляхи до зображень передаються у
+		функцію)</h1>
+	<script>
+		let randomNumber = 1 + Math.floor(Math.random() * 4)
+		function randomImage() {
+			let result
+			switch (randomNumber) {
+				case 1: result = '<img src="/lesson-5/img/images0.jpg" alt="" >'
+					break;
+				case 2: result = '<img src="/lesson-5/img/images1.jpg" alt="">'
+					break;
+				case 3: result = '<img src="/lesson-5/img/images2.jpg" alt="">'
+					break;
+				case 4: result = '<img src="/lesson-5/img/images3.jpg" alt="">'
+			}
+			return result
+		}
+		let image = randomImage()
+		document.write(image)
+	</script>
+</body>
+
+</html>
