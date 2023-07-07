@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1> Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які :
+		• починаються на букву «А»;
+		• перша і остання літери співпадають;
+		• складаються з більше ніш 5 символів;
+	</h1>
+	<script>
+		let carNumber = ['ВХ0202НН', 'НХ2020НХ', 'АА1020АА', 'КА2020КА', 'АС2020АС']
+		function getCarNumber(carNumber) {
+			let countNumber = 0
+			for (let i = 0; i < carNumber.length; i++) {
+				if (carNumber[i][0] === 'А')
+					countNumber++
+			}
+			return countNumber
+		}
+		function getCarNumber1(carNumber) {
+			let countNumber = 0
+			for (let i = 0; i < carNumber.length; i++) {
+				if (carNumber[i][0] === carNumber[i][carNumber[i].length - 1])
+					countNumber++
+			}
+			return countNumber
+		}
+		function getCarNumber2(carNumber) {
+			let countNumber = 0
+			for (let i = 0; i < carNumber.length; i++) {
+				if (carNumber[i].length > 5)
+					countNumber++
+			}
+			return countNumber
+		}
+		document.write(`Кількість номерів які починаються на букву A : ${getCarNumber(carNumber)} <br> `)
+		document.write(`Кількість номерів де перша і остання літери співпадають : ${getCarNumber1(carNumber)} <br>`)
+		document.write(`Кілкість номерів які складаються з більше ніш 5 символів : ${getCarNumber2(carNumber)}`)
+	</script>
+</body>
+
+</html>

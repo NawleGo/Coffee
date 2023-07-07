@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Дано послідовність платіжок протягом року. Знайти сумарну кількість грошей за:
+		за весь рік;
+		у першій половині року;
+		у другій половині року;
+		за літо;
+		за ІІ квартал;
+		за парні місяці (з парними номерами);
+		за місяці, які є початковими у сезоні (весна, літо, осінь, зима).
+	</h1>
+	<script>
+		const paymentsForYear = [2100, 5300, 1200, 3600, 7500, 3100, 10000, 6000, 4200, 1300, 5600, 7100]
+		function getIncomeSum(incomesList, startMonthNumber, endMonthNumber) {
+			let sum = 0
+			for (let month = startMonthNumber; month <= endMonthNumber; month++) {
+				sum += incomesList[month - 1]
+			}
+			return sum
+		}
+		function getIncomeEvenSum(incomesList, startMonthNumber, endMonthNumber) {
+			let sum = 0;
+			for (let month = startMonthNumber; month <= endMonthNumber; month += 2) {
+				sum += incomesList[month - 1];
+			}
+			return sum;
+		}
+		function getIncomeSumfirstMonths(incomesList, startMonthNumber, endMonthNumber) {
+			let sum = 0
+			for (let month = startMonthNumber; month <= endMonthNumber; month += 3) {
+				sum += incomesList[month - 1]
+			}
+			return sum
+		}
+
+		const sumYear = getIncomeSum(paymentsForYear, 1, 12)
+		document.write(`Сума за весь рік: ${sumYear} <br> `)
+		const sumFirstHalfForYear = getIncomeSum(paymentsForYear, 1, 6)
+		document.write(`Сума за першу половину року: ${sumFirstHalfForYear} <br>`)
+		const sumSecondHalfForYear = getIncomeSum(paymentsForYear, 7, 12)
+		document.write(`Сума за другу половину року: ${sumSecondHalfForYear} <br>`)
+		const sumForSummer = getIncomeSum(paymentsForYear, 6, 8)
+		document.write(`Сума за літо: ${sumForSummer} <br>`)
+		const sumSecondQuarter = getIncomeSum(paymentsForYear, 4, 6)
+		document.write(`Сума за 2 квартал: ${sumSecondQuarter} <br>`)
+		const evenSum = getIncomeEvenSum(paymentsForYear, 1, 12)
+		document.write(`Сума за парні місяці: ${evenSum} <br>`)
+		const firstMonthsOfYear = getIncomeSumfirstMonths(paymentsForYear, 1, 12)
+		document.write(`Сума за перші місяці: ${firstMonthsOfYear} <br>`)
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1> Дано послідовність цін товарів та назв (у окремих масивах). Вивести на екран ті, які може собі дозволити
+		користувач (кількість грошей задається).</h1>
+	<script>
+
+		let money = parseFloat(prompt('Кількість грошей'));
+
+		const productName = ['банан', 'кокос', 'сир', 'броколі', 'авокадо'];
+		const productPrice = [60, 120, 50, 150, 70];
+
+		function getProduct(money, productName, productPrice) {
+			let products = []
+
+			for (let i = 0; i < productPrice.length; i++) {
+				if (productPrice[i] <= money) {
+					products.push(productName[i]);
+				}
+			}
+
+			return products;
+		}
+		let relult1 = getProduct(money, productName, productPrice)
+		if (relult1.length === 0) {
+			document.write('недостатньо коштів')
+		}
+		document.write(relult1)
+	</script>
+</body>
+
+</html>

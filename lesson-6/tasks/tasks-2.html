@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача . Дано масив імен учнів. З’ясувати скільки разів зустрічається ім’я «Іван».
+	</h1>
+	<script>
+		let stunentsNumber = parseInt(prompt('Введіть кількість учнів'))
+		let nameStudent = []
+		let count = 0
+		function getNameStudent(stunentsNumber) {
+			let names
+			for (let i = 0; i < stunentsNumber; i++) {
+				names = prompt(`Введіть ім'я учня ${i + 1}`)
+				nameStudent.push(names)
+				if (names === 'Іван') {
+					count++
+				}
+			}
+		}
+		getNameStudent(stunentsNumber)
+		document.write(`Імя Іван зустрічається ${count} рази`)
+	</script>
+</body>
+
+</html>

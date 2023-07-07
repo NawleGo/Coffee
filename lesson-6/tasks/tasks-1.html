@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>
+		Задача 1. Дано масив, який містить оцінки з К предметів. Знайти середній бал і з’ясувати до якої категорії він
+		відноситься (відмінник, двійочник (має хоча би одну двійку), хорошист (оцінки добре і відмінно), трійочник(є хоча
+		би одна трійка)).
+	</h1>
+
+	<script>
+
+		function averagePoints(points) {
+			let average = 0;
+			for (let i = 0; i < points.length; i++) {
+				average += points[i];
+			}
+			average = average / points.length;
+			return average;
+		}
+		function getMinValue(arr) {
+			let minValue = arr[0]
+			for (let i = 1; i < arr.length; i++) {
+				if (arr[i] < minValue)
+					minValue = arr[i]
+			}
+			return minValue
+		}
+		function getStudentsCategory(points) {
+			let category
+			switch (getMinValue(points)) {
+				case 1:
+				case 2: category = 'Двійочник'
+					break;
+				case 3: category = 'Трійочник'
+					break;
+				case 4: category = 'Хорошист'
+					break;
+				case 5: category = 'Відмінник'
+					break
+				default: throw new Error('Некоректна Оцінка')
+					break;
+			}
+			return category
+		}
+
+		let points = [3, 2, 4, 5, 4, 2];
+		let totalAveragePoints = averagePoints(points);
+		let totalStudentsCategory = getStudentsCategory(points)
+		document.write(`Середня оцінка: ${totalAveragePoints.toFixed(1)} <br>`);
+		document.write(`Категорія учня: ${totalStudentsCategory}`)
+
+	</script>
+</body>
+
+</html>
