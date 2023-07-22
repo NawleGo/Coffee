@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>
+		Знайти суми елементів у вказаній області (масиви розділені на 4 рівні частини - не звертаємо увагу на криві
+		малюнки ☺ )
+	</h1>
+	<script>
+		let sumArr = [
+			//0   1   2   3
+			[12, 16, 30, 40], // 0
+			[10, 20, 40, 20], // 1 
+			[30, 40, 30, 23], // 2
+			[24, 16, 21, 14] // 3
+		]
+		//----------------------------------
+		let sumFirst = 0
+		for (let i = 0; i < 2; i++) {
+			for (let u = 0; u < 2; u++) {
+				sumFirst += sumArr[i][u]
+			}
+		}
+		document.write(`Перша частина квадрата: ${sumFirst} <br>`)
+		//----------------------------------
+		let sumSecond = 0
+		for (let i = 0; i < 2; i++) {
+			for (let u = 2; u < 4; u++) {
+				sumSecond += sumArr[i][u]
+			}
+		}
+		document.write(`друга частина квадрата:${sumSecond} <br>`)
+		//-----------------------------------
+		let sumThird = 0
+		for (let i = 2; i < sumArr.length; i++) {
+			for (let u = 0; u < 2; u++) {
+				sumThird += sumArr[i][u]
+			}
+		}
+		document.write(`третя частина квадрата:${sumThird} <br>`)
+		//-------------------------------------
+		let sumFourth = 0
+		for (let i = 2; i < sumArr.length; i++) {
+			for (let u = 2; u < 4; u++) {
+				sumFourth += sumArr[i][u]
+			}
+		}
+		document.write(`четверта частина квадрата:${sumFourth} <br>`)
+		//-------------------------- Суму парних рядків
+		let sumEven = 0
+		for (let i = 0; i < sumArr.length; i += 2) {
+			for (let u = 0; u < 4; u++) {
+				sumEven += sumArr[i][u]
+
+			}
+		}
+		document.write(`Суму парних рядків:${sumEven} <br>`)
+		//--------------------------Суму непарних стовпців
+		let sumOdd = 0
+		for (let i = 0; i < sumArr.length; i++) {
+			for (let u = 1; u < 4; u += 2) {
+				sumOdd += sumArr[i][u]
+			}
+		}
+		document.write(`Суму непарних стовпців:${sumOdd} <br>`)
+		//------------------------------У парних рядках – непарні стовпці, у непарних – парні.
+		let sumEvenRow = 0
+		for (let i = 0; i < sumArr.length; i += 2) {
+			for (let u = 1; u < 4; u += 2) {
+				sumEvenRow += sumArr[i][u]
+			}
+		}
+		document.write(`У парних рядках – непарні стовпці:${sumEvenRow} <br>`)
+		//------------------------------------
+		let sumOddRow = 0
+		for (let i = 1; i < sumArr.length; i += 2) {
+			for (let u = 0; u < 4; u += 2) {
+				sumOddRow += sumArr[i][u]
+			}
+		}
+		document.write(`у непарних – парні.:${sumOddRow} <br>`)
+	</script>
+</body>
+
+</html>

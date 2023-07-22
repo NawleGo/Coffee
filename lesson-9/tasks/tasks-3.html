@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 3. Морський бій. Випадковим чином на двовимірному полі розміром 6*6 розташовується 5 кораблів. Користувач
+		стріляє вказуючи координати. Гра продовжується поки не потоплено усі кораблі або у користувача не закінчаться
+		снаряди.</h1>
+	<script>
+		let gameField = generateGameField(6, 6, 5);
+		let remainingShips = 5;
+		let remainingShots = 15;
+
+		function generateGameField(rowsNumber, colsNumber, shipsNumber) {
+			//---- Створюємо масив заповнений нулями
+			let arr = []
+			for (let row = 0; row < rowsNumber; row++) {
+				let newRow = new Array(colsNumber).fill(0)
+				arr.push(newRow)
+			}
+
+			for (let shipNum = 0; shipNum < shipsNumber;) {
+				const randRowIndex = Math.floor(Math.random() * rowsNumber)
+				const randColIndex = Math.floor(Math.random() * colsNumber)
+				if (arr[randRowIndex][randColIndex] !== 1) {
+					arr[randRowIndex][randColIndex] = 1;
+					shipNum++;
+				}
+			}
+			return arr;
+		}
+
+		let rowShot, colShot;
+		while (remainingShips > 0 && remainingShots > 0) {
+			rowShot = parseInt(prompt('Введіть рядок (1-6)'))
+			colShot = parseInt(prompt('Введіть стовпець (1-6)'))
+
+			if (gameField[rowShot - 1][colShot - 1] === 1) {
+				alert('Ви потопили корабель!');
+				gameField[rowShot - 1][colShot - 1] = -1; 
+				remainingShips--;
+			} else if (gameField[rowShot - 1][colShot - 1] === -1) {
+				alert('Сюди вже стріляли і потопили корабель! Спробуйте іншу клітинку.');
+			} else {
+				alert('Мимо!');
+			}
+
+			remainingShots--;
+		}
+
+		if (remainingShips === 0) {
+			document.write('Виграли! Усі кораблі потоплені!');
+		} else {
+			document.write('Гра закінчилась. Ваші снаряди закінчилися.');
+		}
+	</script>
+</body>
+
+</html>
