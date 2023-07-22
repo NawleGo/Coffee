@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 2 Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування змішуванням.
+	</h1>
+	<script>
+		let randomArr = []
+		for (let i = 0; i < 30; i++) {
+			let randomNumber = 1 + Math.floor(Math.random() * 100)
+			randomArr.push(randomNumber)
+		}
+		const swap = (arr, i, j) => {
+			const akum = arr[i]
+			arr[i] = arr[j]
+			arr[j] = akum
+		}
+
+		let leftIndex = 0
+		let rightIndex = randomArr.length - 1
+		let counter = 0
+		while (leftIndex < rightIndex) {
+			for (let idx = leftIndex; idx < rightIndex; idx++) {
+				if (randomArr[idx] > randomArr[idx + 1]) {
+					swap(randomArr, idx, idx + 1)
+				}
+			}
+			counter++;
+			rightIndex--;
+
+			for (let idx = rightIndex; idx > leftIndex; idx--) {
+				if (randomArr[idx] < randomArr[idx - 1]) {
+					swap(randomArr, idx, idx - 1)
+				}
+			}
+			counter++;
+			leftIndex++;
+		}
+		document.write(`${randomArr} <br>`)
+		document.write(`Кілкість обмінів: ${counter} <br>`)
+	</script>
+</body>
+
+</html>
