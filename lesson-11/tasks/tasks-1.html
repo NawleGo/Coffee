@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Реалізувати рекурсивну функцію знаходження степеня числа а</h1>
+	<script>
+		function getStep(a, n) {
+			if (n === 1) return a
+			else if (n > 1) return getStep(a, n - 1) * a
+		}
+		let result = getStep(3, 4)
+		document.write(result)
+	</script>
+</body>
+
+</html>

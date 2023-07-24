@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Реалізувати бінарний пошук (розглядали на попередніх уроках) з використанням рекурсивного алгоритму.</h1>
+	<script>
+		let arr = [22, 24, 27, 28, 50, 60, 75, 100];
+		let target = 75;
+		function binarySearchRecursive(arr, target, start, end) {
+			let middle = Math.floor((start + end) / 2);
+			if (start > end) {
+				return -1;
+			}
+			if (arr[middle] === target) {
+				return middle;
+			}
+			else if (arr[middle] > target) {
+				return binarySearchRecursive(arr, target, start, middle - 1);
+			}
+			else {
+				return binarySearchRecursive(arr, target, middle + 1, end);
+			}
+		}
+		let result = binarySearchRecursive(arr, target, 0, arr.length - 1);
+		if (result !== -1) {
+			console.log(`Елемент ${target} знайдений за індексом ${result}.`);
+		} else {
+			console.log("Елемент не знайдений.");
+		}
+
+	</script>
+</body>
+
+</html>
