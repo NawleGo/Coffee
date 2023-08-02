@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 1. Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому випадку.
+		Тир
+		Поля(властивості)
+		Масив, у якому зберігається поле з зайцями
+		Методи (дії)
+		Метод пострілу (задається позиція пострілу)
+		Виведення ігрового поля
+	</h1>
+	<script>
+		let tir = {
+			field: [0, 1, 0, 1, 1, 0, 0],
+			shotPosition: function () {
+				let pos = parseInt(prompt(`Введіть номер комірки від 1 до ${this.field.length}`));
+				if (pos < 1 || pos > this.field.length) {
+					alert('Нема такої комірки');
+				} else if (this.field[pos - 1] !== 0) {
+					this.field[pos - 1] = 0;
+					alert('Попали!');
+				} else {
+					alert('Мимо!');
+				}
+			},
+			gameField: function () {
+				let gameString = '';
+				for (let i = 0; i < this.field.length; i++) {
+					if (this.field[i] === 1) {
+						gameString += '1';
+					} else {
+						gameString += '0';
+					}
+				}
+				alert(gameString);
+			},
+		};
+		tir.gameField();
+		
+		tir.shotPosition();
+
+		tir.gameField();
+
+	</script>
+</body>
+
+</html>

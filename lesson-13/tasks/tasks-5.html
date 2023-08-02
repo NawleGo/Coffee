@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>
+		Розробити клас «Керівник танців»
+		Поля
+		Масив імен хлопців
+		Масив імен дівчат
+		Методи
+		Метод випадкового вибору імені хлопця
+		Метод випадкового вибору імені дівчини
+		Метод виведення пари для танців
+		Метод run , який ініціює через кожні 5 секунд виведення нової пари для танців
+	</h1>
+	<script>
+		class HeadDancer {
+			constructor(boysNames, girlsNames) {
+				this.boys = boysNames
+				this.girls = girlsNames
+			}
+			randomBoyName() {
+				this.randomName = []
+				for (let i = 0; i < this.boys.length; i++) {
+					const generateName = Math.floor(Math.random() * this.boys.length)
+					this.randomName.push(this.boys[generateName])
+					break;
+				}
+				return this.randomName
+			}
+			randomGirlName() {
+				this.randomName = []
+				for (let i = 0; i < this.girls.length; i++) {
+					const generateName = Math.floor(Math.random() * this.girls.length)
+					this.randomName.push(this.girls[generateName])
+					break;
+				}
+				return this.randomName
+			}
+			coupleForDance() {
+				document.write(`Пара для танцю : ${this.randomBoyName()} та ${this.randomGirlName()}`)
+			}
+			run() {
+				setInterval(() => {
+					document.write(`Нова пара:${this.randomBoyName()} та ${this.randomGirlName()} <br>`)
+				}, 5000);
+			}
+		}
+		const boys = ['Ivan', 'Petro', 'Dmytro']
+		const girls = ['Anna', 'Olya', 'Galya']
+		let result = new HeadDancer(boys, girls)
+		document.write(`Випадкове ім'я хлопця : ${result.randomBoyName()} <br>`)
+		document.write(`Випадкове ім'я дівчини : ${result.randomGirlName()} <br>`)
+		result.coupleForDance()
+		result.run()
+	</script>
+</body>
+
+</html>

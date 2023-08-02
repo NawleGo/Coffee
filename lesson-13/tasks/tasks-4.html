@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>. Розробити клас MultChecker для перевірки таблиці множення
+		Поля
+		Число, яке перевіряємо (наприклад, перевірка частини таблиці множення на 7)
+		Кількість правильних відповідей
+		Кількість неправильних відповідей
+		Методи
+		Генерування прикладу (метод випадковим чином визначає друге число, перше число фіксоване)
+		Перевірка правильності вказаної відповіді
+		render
+
+	</h1>
+	<script>
+		class MultChecker {
+			constructor(number, countTrue, countFalse) {
+				this.number = number
+				this.countTrue = countTrue
+				this.countFalse = countFalse
+			}
+			generateExample() {
+				const randomNumber = Math.floor(Math.random() * 100)
+				this.answerUser = parseInt(prompt(`Введіть правильну відповідь прикладу ${this.number} * ${randomNumber}`))
+				return this.example = randomNumber * this.number
+
+			}
+			answerCheck() {
+				if (this.answerUser === this.example) return this.countTrue++
+				else return this.countFalse++
+			}
+			render() {
+				document.write(`Кількість правильних відповідей : ${this.countTrue}, <br> Кількість не правильних відповідей : ${this.countFalse};`)
+			}
+		}
+		let result = new MultChecker(5, 0, 0)
+		result.generateExample()
+		result.answerCheck()
+		result.render()
+	</script>
+</body>
+
+</html>
