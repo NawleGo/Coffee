@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>
+		Задача 3. Об’єкт “Фірма” (використати члени-класи)
+		поля
+		назва фірми;
+		дата заснування (рік, місяць);
+		послуги (назва послуги, вартість, термін виконання);
+		адреси філіалів (країна, місто, вулиця, номер будинку);
+		методи
+		визначення кількості років існування фірми;
+		виведення всіх філіалів фірми у вказаному місті;
+		виведення на екран послуг, що можуть бути виконані за вказану суму грошей та вказаний термін часу;
+
+
+	</h1>
+	<script>
+
+		class DateStart {
+			constructor({ year, month }) {
+				this.year = year;
+				this.month = month;
+			}
+			toString() {
+				return `Year - ${this.year}, Month - ${this.month}`;
+			}
+		}
+
+		class Services {
+			constructor({ nameServices, cost, prodTime }) {
+				this.nameServices = nameServices;
+				this.cost = cost;
+				this.prodTime = prodTime;
+			}
+		}
+
+		class Address {
+			constructor({ country, city, street, houseNum }) {
+				this.country = country;
+				this.city = city;
+				this.street = street;
+				this.houseNum = houseNum;
+			}
+		}
+
+		class Firm {
+			constructor(initDate) {
+				this.name = initDate.name;
+				this.date = new DateStart(initDate);
+				this.service = new Services(initDate);
+				this.address = new Address(initDate);
+			}
+			yearExistence() {
+				return 2023 - this.date.year
+			}
+			getServicesWithinBudgetAndTime(budget, time) {
+				const validServices = [];
+				for (const serviceName in this.service) {
+					const service = this.service[serviceName];
+					if (service.cost <= budget && service.prodTime <= time) {
+						validServices.push(service.nameServices);
+					}
+				}
+				return validServices;
+			}
+		}
+
+		let newFirm = new Firm({
+			name: 'Vasya',
+			year: 2010,
+			month: 4,
+			nameServices: "cleaning",
+			cost: 500,
+			prodTime: '1 day',
+			country: 'Ukraine',
+			city: 'Kyiv',
+			street: 'Shevchenka',
+			houseNum: 20,
+		});
+
+		//console.log(newFirm);
+		console.log(`Фірма існує : ${newFirm.yearExistence()} роки`)
+		console.log(newFirm.address)
+		const budget = 600;
+		const maxTime = 2;
+		const availableServices = newFirm.getServicesWithinBudgetAndTime(budget, maxTime);
+		console.log(`Послуги, доступні за ${budget} грн і ${maxTime} днів: ${availableServices.join(', ')}`);
+	</script>
+</body>
+
+</html>
