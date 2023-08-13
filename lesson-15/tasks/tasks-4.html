@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Особиста бібліотека. Картотека домашньої бібліотеки: дані книги (автори (піб, рік народження, короткий опис),
+		назва книги, жанр, видавництво (назва, реєстраційний номер, рік засування)). Реалізувати розділи бібліотеки
+		організувати додавання/вилучення книг та вибір книг за назвою, за ПІБ автора, за видавництвом.</h1>
+	<script>
+		class Book {
+			constructor(author, title, genre, publisher) {
+				this.author = author;
+				this.title = title;
+				this.genre = genre;
+				this.publisher = publisher;
+			}
+		}
+
+		class Library {
+			constructor() {
+				this.books = [];
+			}
+
+			addBook(book) {
+				this.books.push(book);
+			}
+
+			removeBook(title) {
+				const index = this.books.findIndex(book => book.title === title);
+				if (index !== -1) {
+					this.books.splice(index, 1);
+				}
+			}
+
+			findByTitle(title) {
+				return this.books.filter(book => book.title === title);
+			}
+
+			findByAuthor(author) {
+				return this.books.filter(book => book.author === author);
+			}
+
+			findByPublisher(publisher) {
+				return this.books.filter(book => book.publisher === publisher);
+			}
+		}
+
+		const library = new Library();
+
+		const book1 = new Book("Іван Петрович", "Книга 1", "Драма", "Видавництво A");
+		const book2 = new Book("Олена Сидорова", "Книга 2", "Фантастика", "Видавництво B");
+
+		library.addBook(book1);
+		library.addBook(book2);
+
+		console.log(library.books);
+
+		library.removeBook("Книга 1");
+		console.log(library.books);
+
+		const foundByTitle = library.findByTitle("Книга 2");
+		console.log(foundByTitle);
+
+		const foundByAuthor = library.findByAuthor("Олена Сидорова");
+		console.log(foundByAuthor);
+
+		const foundByPublisher = library.findByPublisher("Видавництво B");
+		console.log(foundByPublisher);
+	</script>
+</body>
+
+</html>

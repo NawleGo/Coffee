@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Створити клас, що дозволяє виконувати такі операції над масивами: знаходження кількості додатних, кількості
+		від’ємних, кількість входжень деякого числа (статичні методи)</h1>
+	<script>
+
+		class ArrayOperations {
+			static arrNumber = [20, -10, 40, 50, -20, 0, 40]
+			static getPositiveValue() {
+				let positiveValue = ArrayOperations.arrNumber.filter(
+					(el) => el >= 0
+				)
+				return positiveValue
+			}
+			static getNegativeValue() {
+				let negativeValue = ArrayOperations.arrNumber.filter(
+					(el) => el < 0
+				)
+				return negativeValue
+			}
+			static getCountNum(countNum) {
+				let count = 0
+				for (const num of ArrayOperations.arrNumber) {
+					if (num === countNum)
+						count++
+					else count
+				}
+				return count
+			}
+
+		}
+		const totalArr = new ArrayOperations()
+		console.log(ArrayOperations.getPositiveValue())
+		console.log(ArrayOperations.getNegativeValue())
+		console.log(ArrayOperations.getCountNum(20))
+	</script>
+</body>
+
+</html>
