@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<style>
+	#desire {
+		font-size: 30px;
+		line-height: 1.5;
+		color: rgba(110, 4, 32, 0.585);
+	}
+</style>
+
+<body>
+	<h1>Наперед задано у скрипті масив зі списком бажань. Після завантаження сторінки випадковим чином вибираються 3 і
+		відображаються у окремих div (їх треба створити і додати на сторінку)</h1>
+	<div id="desire">
+
+	</div>
+	<script>
+		const arrDesire = ['Кохання', 'Багатство', 'Щастя', 'Кар\'єра', 'Перемога', 'Автомобіль'];
+
+		function getDesire(arrDesire) {
+			for (let i = 0; i < 3; i++) {
+				const randomIndex = Math.floor(Math.random() * arrDesire.length);
+				const randomDesire = arrDesire[randomIndex];
+
+				const div = document.createElement('div');
+				div.innerText = randomDesire;
+				document.getElementById('desire').append(div);
+			}
+		}
+		desire.onload = getDesire(arrDesire)
+
+	</script>
+</body>
+
+</html>

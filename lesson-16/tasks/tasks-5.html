@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Користувач задає кількість оцінок і натискає на кнопку «get table». В результаті формується таблиця з input, куди
+		користувач вводить оцінки. Після цього натискає на кнопку “get sum” і знаходить середнє значення</h1>
+	<div id="tb">
+		<label>Кілкість оцінок :
+			<input id="inp1" autocomplete="off" type="text" name="form[]" data-error="Помилка" placeholder=""> <br>
+		</label>
+		<button id="btn" type="button">get table</button>
+	</div>
+
+</body>
+<script>
+	btn.onclick = getCountRating;
+
+	function getCountRating() {
+		const table = document.createElement('table');
+		tb.append(table);
+		const inpValue = parseInt(document.getElementById('inp1').value);
+
+		for (let i = 0; i < inpValue; i++) {
+			const inp = document.createElement('input');
+			inp.className = 'input';
+			inp.type = 'number';
+			table.append(inp);
+		}
+
+		const button = document.createElement('button');
+		button.innerText = 'get sum';
+		tb.append(button);
+		button.id = 'newbtn';
+
+		newbtn.onclick = getAverage;
+	}
+
+	function getAverage() {
+		const inputs = document.getElementsByClassName('input');
+		let sum = 0;
+		for (let i = 0; i < inputs.length; i++) {
+			sum += parseInt(inputs[i].value);
+		}
+		const average = sum / inputs.length;
+		alert('Середнє значення оцінок: ' + average);
+	}
+</script>
+
+</html>

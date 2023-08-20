@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<style>
+	body {
+		font-size: 20px;
+		line-height: 1.5;
+	}
+
+	button {
+		padding: 4px;
+		transition: 0.3s;
+
+		&:hover {
+			background-color: rgba(151, 147, 147, 0.753);
+			transform: scale(1.05)
+		}
+	}
+
+	input:focus {
+
+		background-color: rgb(208, 208, 235);
+	}
+</style>
+
+<body>
+	<h1>Розробити калькулятор</h1>
+	<label>
+		First number
+		<input id="first" type="number" placeholder="Type first number here" value="0" />
+		<br>
+	</label>
+	<label>
+		Second number
+		<input id="second" type="number" placeholder="Type second number here" value="0" />
+	</label>
+	<div id="container">
+		<button id="sum">Додати</button>
+		<button id="takeAway">Відняти</button>
+		<button id="multiply">Помножити</button>
+		<button id="share">Поділити</button>
+	</div>
+	<label>
+		Результат
+		<input id="result" type="number" placeholder="0" />
+	</label>
+	<div id="resText"></div>
+	<script>
+		function getSum() {
+			const firstNumber = parseInt(document.getElementById('first').value)
+			const secondNumber = parseInt(document.getElementById('second').value)
+			const sum = firstNumber + secondNumber
+			document.getElementById('result').value = sum
+		}
+		function getTakeAway() {
+			const firstNumber = parseInt(document.getElementById('first').value)
+			const secondNumber = parseInt(document.getElementById('second').value)
+			const takeAwayNum = firstNumber - secondNumber
+			document.getElementById('result').value = takeAwayNum
+		}
+		function getMultiply() {
+			const firstNumber = parseInt(document.getElementById('first').value)
+			const secondNumber = parseInt(document.getElementById('second').value)
+			const multiply = firstNumber * secondNumber
+			document.getElementById('result').value = multiply
+		}
+		function getShare() {
+			const firstNumber = parseInt(document.getElementById('first').value)
+			const secondNumber = parseInt(document.getElementById('second').value)
+			const share = firstNumber / secondNumber
+			document.getElementById('result').value = share
+		}
+		sum.onclick = getSum
+		takeAway.onclick = getTakeAway
+		multiply.onclick = getMultiply
+		share.onclick = getShare
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Користувач задає рік народження. Визначити кількість років користувача.</h1>
+	<label>
+		Введіть рік народження
+		<input id="inp1" autocomplete="off" type="text" name="form[]" data-error="Помилка" placeholder="">
+		<button type="button">Ваш вік</button>
+	</label>
+	<script>
+		function getUsersYear() {
+			const currentYear = 2023
+			const year = parseInt(document.getElementById('inp1').value)
+			const age = currentYear - year
+			if (year > 2023 || year < 1900)
+				alert('Не вірний рік')
+			else
+				alert(`Ваш вік становить : ${age}`)
+		}
+		document.querySelector('button').onclick = getUsersYear
+	</script>
+</body>
+
+</html>
