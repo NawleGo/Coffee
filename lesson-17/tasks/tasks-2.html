@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<style>
+	input {
+		display: block;
+	}
+</style>
+
+<body>
+	<h1>Дано 5 елементів input. При введенні значення у якийсь із них необхідно автоматично заповнювати інші (усі
+		попередні у спадному порядку(кожен попередній має значення на 1 менше за наступний), усі наступні на 1 більше
+		(кожен наступне на 1 більше за попереднього))</h1>
+	<label id="lbl1">
+		Value 1
+		<input type="number" data-error="Помилка" placeholder="">
+		Value 2
+		<input type="number" data-error="Помилка" placeholder="">
+		Value 3
+		<input type="number" data-error="Помилка" placeholder="">
+		Value 4
+		<input type="number" data-error="Помилка" placeholder="">
+		Value 5
+		<input type="number" data-error="Помилка" placeholder="">
+	</label>
+	<script>
+		function getValue() {
+			let currentEl = this
+			let valueCurr = parseInt(this.value)
+			if (isNaN(valueCurr)) {
+				return
+			}
+			else {
+				while (currentEl.previousElementSibling !== null) {
+					currentEl.previousElementSibling.value = valueCurr -= 1
+					currentEl = currentEl.previousElementSibling
+
+				}
+				while (currentEl.nextElementSibling !== null) {
+					currentEl.nextElementSibling.value = valueCurr += 1
+					currentEl = currentEl.nextElementSibling
+
+				}
+			}
+		}
+
+		const inp = document.querySelectorAll('input');
+		for (const input of inp) {
+			input.oninput = getValue
+		}
+
+	</script>
+</body>
+
+</html>

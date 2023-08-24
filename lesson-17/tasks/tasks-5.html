@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+	body {
+		margin: 0;
+		overflow: hidden;
+	}
+
+	img {
+		width: 100px;
+		position: absolute;
+		top: 0;
+		transition: top 0.1s;
+	}
+</style>
+
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<div>
+		<img src="/lesson-17/image/219960320.webp" alt="">
+	</div>
+
+
+	<script>
+		/*<h1> Відобразити падаючий сніг. Сніжинка з’являється у верхній частині екрану (top =0) і з випадковою швидкістю
+			рухається вниз (у setInterval викликати метод, у якому додавати крок до top). Як тільки сніжинка досягає нижньої
+			частини екрану (top>maxTop) вона знову повинна з’явитись у верхній частині екрану (top=0)</h1>*/
+		const image = document.querySelector('img');
+		let topPosition = 0;
+		const maxTop = window.innerHeight - 100;
+
+		function move() {
+			topPosition += Math.random() * 15;
+
+			if (topPosition > maxTop) {
+				topPosition = 0;
+			}
+
+			image.style.top = topPosition + 'px';
+		}
+
+		image.onload = function () {
+			setInterval(move, 50);
+		};
+
+	</script>
+</body>
+
+</html>

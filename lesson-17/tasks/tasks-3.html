@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<style>
+	ul,
+	ol {
+		list-style: none;
+	}
+
+	ol {
+		display: flex;
+	}
+
+	li {
+		padding: 0 20px;
+	}
+</style>
+
+<body>
+	<h1>Дано 5 випадковим чином згенерованих нумерованих списків з рандомними числами (кількість елементів у списку
+		випадкова від 1 до 10, елементи випадкові – від 1 до 100). При натисненні на кнопку нумеровані списки з парною
+		кількістю елементів зафарбувати у зелений колір, інші у червоний.</h1>
+	<script>
+
+
+		for (let i = 0; i < 5; i++) {
+			const olList = document.createElement('ol')
+			document.body.append(olList)
+			const randomList = 1 + Math.floor(Math.random() * 10)
+			for (let j = 0; j < randomList; j++) {
+				const liList = document.createElement('li')
+				const randomEl = 1 + Math.floor(Math.random() * 100)
+				liList.innerText = randomEl
+				olList.append(liList)
+			}
+		}
+		function evenList() {
+			const listItems = document.querySelectorAll('li');
+			for (const key of listItems) {
+				const text = key.innerText
+				if (text % 2 === 0) {
+					key.style.backgroundColor = 'green'
+				} else key.style.backgroundColor = 'red'
+			}
+		}
+		const btn = document.createElement('button')
+		btn.innerText = 'Кнопка'
+		document.body.append(btn)
+		btn.onclick = evenList
+	</script>
+</body>
+
+</html>

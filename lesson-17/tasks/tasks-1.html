@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1> Дано 10 рядків тексту «Hello!» у окремих div. При кліку на якийсь із них усі наступні повинні бути зафарбовані у
+		червоний колір.</h1>
+	<div>Hello!</div>
+	<div>Hello!</div>
+	<div>Hello!</div>
+	<div>Hello!</div>
+	<div>Hello!</div>
+	<div>Hello!</div>
+	<div>Hello!</div>
+	<div>Hello!</div>
+	<div>Hello!</div>
+	<div>Hello!</div>
+	<script>
+
+		function getElem() {
+			this.style.color = 'red';
+			let td = this.nextElementSibling;
+
+			while (td) {
+				td.style.color = 'red';
+				td = td.nextElementSibling;
+			}
+		}
+		const colors = document.querySelectorAll('div')
+		for (const key of colors) {
+			key.onclick = getElem
+		}
+	</script>
+</body>
+
+</html>

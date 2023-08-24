@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<style>
+	table {
+		margin: 20px;
+
+	}
+
+	td {
+		width: 30px;
+		line-height: 1.5;
+		background-color: rgb(175, 173, 173);
+	}
+</style>
+
+<body>
+	<h1>Дано 3 таблиці розмірності 3*3 з випадковими числами. Якщо відбувається клік на якійсь із клітинок, то до
+		відповідної таблиці додається червона рамка (спробуйте додати можливість відображення кількості кліків біля назви
+		таблиці з використанням відповідно доданого для цього атрибута).</h1>
+
+
+	<script>
+		for (let i = 0; i < 3; i++) {
+			const table = document.createElement('table')
+			document.body.append(table)
+			for (let u = 0; u < 3; u++) {
+				const tr = document.createElement('tr')
+				table.append(tr)
+				for (let j = 0; j < 3; j++) {
+					const td = document.createElement('td')
+					tr.append(td)
+					const randomNumber = 1 + Math.floor(Math.random() * 10)
+					td.innerText = randomNumber
+				}
+			}
+		}
+		function swapColor() {
+			this.style.border = '2px solid red'
+			clickCount++
+			getClickCount()
+
+		}
+		function getClickCount() {
+			const count = document.querySelector('div')
+			count.innerText = `Кількість кліків: ${clickCount} `
+		}
+		const tdList = document.querySelectorAll('td')
+		for (const key of tdList) {
+			key.onclick = swapColor
+		}
+		let clickCount = 0
+		const click = document.createElement('div')
+		document.body.append(click)
+	</script>
+</body>
+
+</html>
