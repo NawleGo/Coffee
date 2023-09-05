@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<style>
+	div {
+		margin-bottom: 20px;
+	}
+</style>
+
+<body>
+	<div id="auto">
+		Марка
+	</div>
+	<div id="year">
+		Рік випуску
+	</div>
+
+</body>
+<script>
+	class Auto {
+		constructor(brand1, brand2, brand3, price1, price2, price3, year1, year2, year3) {
+			this.brand1 = brand1;
+			this.brand2 = brand2;
+			this.brand3 = brand3;
+			this.price1 = price1;
+			this.price2 = price2;
+			this.price3 = price3;
+			this.year1 = year1;
+			this.year2 = year2;
+			this.year3 = year3;
+		}
+
+		priceAuto() {
+			const selectedBrand = this.selectBrand.value;
+			const selectedYear = this.selectYear.value;
+			let selectedPrice = 'Ціна не визначена';
+
+			if (selectedBrand === this.brand1) {
+				selectedPrice = this.price1;
+			} else if (selectedBrand === this.brand2) {
+				selectedPrice = this.price2;
+			} else if (selectedBrand === this.brand3) {
+				selectedPrice = this.price3;
+			}
+
+			const resultElement = document.getElementById('result');
+			resultElement.innerHTML = `
+      <p>Обрана марка автомобіля: ${selectedBrand}</p>
+      <p>Ціна автомобіля: ${selectedPrice}</p>
+      <p>Рік автомобіля: ${selectedYear}</p>
+    `;
+		}
+
+		render(containerSelector) {
+			const selectBrand = document.createElement('select');
+			const selectYear = document.createElement('select');
+
+			const brands = [this.brand1, this.brand2, this.brand3];
+			for (let i = 0; i < brands.length; i++) {
+				const option = document.createElement('option');
+				option.innerText = brands[i];
+				selectBrand.appendChild(option);
+			}
+
+			const years = [this.year1, this.year2, this.year3];
+			for (let i = 0; i < years.length; i++) {
+				const option = document.createElement('option');
+				option.innerText = years[i];
+				selectYear.appendChild(option);
+			}
+
+			selectBrand.onchange = this.priceAuto.bind(this);
+			selectYear.onchange = this.priceAuto.bind(this);
+
+			this.selectBrand = selectBrand;
+			this.selectYear = selectYear;
+
+			if (containerSelector) {
+				containerSelector.appendChild(selectBrand);
+				containerSelector.appendChild(selectYear);
+			}
+
+			const resultContainer = document.createElement('div');
+			resultContainer.id = 'result';
+			containerSelector.appendChild(resultContainer);
+		}
+	}
+
+	const auto = new Auto('BMW', 'Audi', 'VAG', '30000', '35000', '32000', '2020', '2021', '2022');
+
+	auto.render(document.body);
+
+
+</script>
+
+</html>

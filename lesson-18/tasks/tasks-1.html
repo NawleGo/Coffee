@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<style>
+	body {
+		overflow: hidden;
+	}
+
+	img {
+		position: absolute;
+
+	}
+</style>
+
+<body>
+
+	<div id="container">
+
+	</div>
+	<script>
+		/*
+			Сяючі зорі. Вказана кількість зірочок повинна з’являтися у випадковій частині екрану. Кожна зірка (це екземпляр
+			класу Star) з певним кроком і інтервалом збільшується від мінімального до максимального розміру. Як тільки
+			досягнути максимального розміру зірочка повинна з’являтися у іншій випадковій позиції.
+	*/
+		class Star {
+			constructor(imgSrc, interval) {
+				this.imgSrc = imgSrc;
+				this.interval = interval;
+			}
+
+			randomPosition(min = 0, max = 100) {
+				return min + Math.floor(Math.random() * (max - min + 1));
+			}
+
+			increaseSize() {
+				this.el.style.width = (parseInt(this.el.style.width) + 1) + 'px';
+			}
+
+			getInterval() {
+				const intervalId = setInterval(() => {
+					if (parseInt(this.el.style.width) < 120) {
+						this.increaseSize();
+					} else {
+						this.el.style.width = '20px';
+						this.el.style.top = this.randomPosition() + '%';
+						this.el.style.left = this.randomPosition() + '%';
+					}
+				}, this.interval);
+			}
+
+
+			render(selectorContainer) {
+				const el = document.createElement('img');
+				el.setAttribute('src', this.imgSrc);
+				el.style.top = this.randomPosition() + '%';
+				el.style.left = this.randomPosition() + '%';
+				el.style.width = '20px';
+				this.el = el;
+				if (selectorContainer) {
+					selectorContainer.append(el);
+				}
+			}
+		}
+
+		window.onload = function () {
+			const container = document.getElementById('container');
+			for (let i = 0; i < 100; i++) {
+				const star = new Star('../image/star.svg.png', 20);
+				star.render(container);
+				star.getInterval();
+			}
+		}
+
+	</script>
+</body>
+
+</html>

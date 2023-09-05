@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<div id="container">
+		<button>Click №1</button>
+		<button>Click №2</button>
+		<button>Click №3</button>
+		<button>Click №4</button>
+		<input type="number">
+		<input type="number">
+		<input type="number">
+		<input type="number">
+	</div>
+	<div id="listenText">
+
+	</div>
+	<script>
+		const cont = document.getElementById('container')
+		const text = document.getElementById('listenText')
+		let clickCountButton = 0
+		let clickCountInput = 0
+		cont.addEventListener("click", function (e) {
+			if (e.target.tagName === 'BUTTON') {
+				clickCountButton++
+
+			} else if (e.target.tagName === 'INPUT') {
+				clickCountInput++
+			}
+			text.innerText = `Кілкість кліків по кнопці: ${clickCountButton}; Кілкість кліків по інпуту: ${clickCountInput}`
+		});
+	</script>
+</body>
+
+</html>

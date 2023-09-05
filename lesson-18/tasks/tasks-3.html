@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+	input {
+		display: block;
+	}
+</style>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<form id="container" action="files/sendmail/sendmail.php" method="POST">
+		Вік
+		<input type="number">
+		Зріст
+		<input type="number">
+		Вага
+		<input type="number">
+		Заробітна плата
+		<input type="number">
+		Стаж
+		<input type="number">
+		Номер відділу
+		<input type="number">
+		Порядковий номер
+		<input type="number">
+	</form>
+	<script>
+		const inp = document.getElementById('container')
+		inp.addEventListener('click', (e) => {
+			if (e.target.tagName === 'INPUT') {
+				e.target.value = '0';
+			}
+		});
+	</script>
+</body>
+
+</html>
