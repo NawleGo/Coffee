@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<style>
+	img {
+		position: absolute;
+		width: 50px;
+	}
+</style>
+
+<body>
+	<div id="container">
+
+	</div>
+</body>
+<script>
+	class Parent {
+		constructor(corX, corY, srcImg, intervalRes) {
+			this.corX = corX
+			this.corY = corY
+			this.srcImg = srcImg
+			this.intervalRes = intervalRes
+		}
+		render(containerSelector) {
+			const img = document.createElement('img')
+			img.setAttribute('src', this.srcImg)
+			img.style.top = this.corX
+			img.style.left = this.corY
+			this.img = img
+			if (containerSelector) containerSelector.append(img)
+		}
+		resInterval(min, max, randomWidthBool, randomCorX) {
+			setInterval(() => {
+				const randomNum = min + Math.floor(Math.random() * (max - min + 1))
+				if (randomWidthBool) this.img.style.width = randomNum + 'px'
+				if (randomCorX) this.img.style.top = parseInt(this.corX) + randomNum + 'px'
+
+			}, this.intervalRes);
+		}
+	}
+	class House extends Parent {
+		constructor(corX, corY, srcImg, intervalRes) {
+			super(corX, corY, srcImg, intervalRes)
+		}
+	}
+	const cont = document.getElementById('container')
+	const newHouse = new House('50px', '100px', '../image/house.jpg', 500)
+	newHouse.render(cont)
+	newHouse.resInterval(10, 200, true)
+
+	class Dog extends Parent {
+		constructor(corX, corY, srcImg, intervalRes) {
+			super(corX, corY, srcImg, intervalRes)
+		}
+	}
+	const dog = new Dog('500px', '500px', '../image/dog.jpg', 500)
+	dog.render(cont)
+	dog.resInterval(-200, 200, false, true)
+
+	class Bird extends Parent {
+		constructor(corX, corY, srcImg, intervalRes) {
+			super(corX, corY, srcImg, intervalRes)
+		}
+		resInterval(min, max) {
+			setInterval(() => {
+				const maxHeight = Math.floor(Math.random() * innerHeight)
+				const maxWidth = Math.floor(Math.random() * innerWidth)
+				this.img.style.top = maxHeight + 'px'
+				this.img.style.left = maxWidth + 'px'
+			}, this.intervalRes);
+		}
+	}
+
+	const bird = new Bird('0px', '0px', '../image/bird.jpg', 1000)
+	bird.render(cont)
+	bird.resInterval()
+
+</script>
+
+</html>

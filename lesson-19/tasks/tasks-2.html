@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+	class Client {
+		constructor(idClient, fullName, countMoney) {
+			this.idClient = idClient
+			this.fullName = fullName
+			this.countMoney = countMoney
+		}
+
+		toString() {
+			return `Прості клієнти: ІД клієнта: ${this.idClient}, ПІБ: ${this.fullName}, Кілкість коштів: ${this.countMoney} `
+		}
+	}
+
+	class GoldenClient extends Client {
+		constructor(idClient, fullName, countMoney, creditLimit, percent) {
+			super(idClient, fullName, countMoney)
+			this.creditLimit = creditLimit
+			this.percent = percent
+		}
+		getFine(creditUse) {
+			return this.creditLimit -= (creditUse + (creditUse / 100 * this.percent))
+		}
+		toString() {
+			return `Віп клієнти: ІД клієнта: ${this.idClient}, ПІБ: ${this.fullName}, Кілкість коштів: ${this.countMoney} `
+		}
+	}
+	const clients = [
+		{
+			idClient: 400,
+			fullName: 'Іванов Іван Іванович',
+			countMoney: 5000,
+		},
+		{
+			idClient: 300,
+			fullName: 'Мельник Василь Ігорович',
+			countMoney: 6000,
+		},
+		{
+			idClient: 500,
+			fullName: 'Борислав Маским Петрович',
+			countMoney: 10000,
+		},
+	];
+	const vipClients = [
+		{
+			idClient: 10,
+			fullName: 'Іванов Петро Максимович',
+			countMoney: 50000,
+		},
+		{
+			idClient: 30,
+			fullName: 'Маркі Ігор Ігорович',
+			countMoney: 60000,
+		},
+		{
+			idClient: 50,
+			fullName: 'Драчук Андрій Петрович',
+			countMoney: 100000,
+		},
+	]
+
+
+	class Bank {
+		constructor() {
+			this.clients = []
+			this.vipClients = []
+		}
+		addClient(client) {
+			this.clients.push(client)
+		}
+		addVipClient(vipClient) {
+			this.vipClients.push(vipClient)
+		}
+		totalSum() {
+			const sumClients = this.clients.reduce((prevSum, sum) => prevSum + sum.countMoney, 0)
+			const sumVipClients = this.vipClients.reduce((prevSum, sum) => prevSum + sum.countMoney, 0)
+			return sumClients + sumVipClients
+		}
+		toString() {
+			let bankInfo = "Клієнти банку:\n";
+			bankInfo += "Звичайні клієнти:\n";
+			for (const client of this.clients) {
+				bankInfo += client.toString() + "\n";
+			}
+			bankInfo += "VIP-клієнти:\n";
+			for (const vipClient of this.vipClients) {
+				bankInfo += vipClient.toString() + "\n";
+			}
+			bankInfo += `Сумарна кількість коштів в банку: ${this.totalSum()}`;
+			return bankInfo;
+
+		}
+	}
+	const bank = new Bank()
+	for (const clientData of clients) {
+		const client = new Client(clientData.idClient, clientData.fullName, clientData.countMoney);
+		bank.addClient(client);
+	}
+	for (const clientVipData of vipClients) {
+		const vipClient = new GoldenClient(clientVipData.idClient, clientVipData.fullName, clientVipData.countMoney);
+		bank.addVipClient(vipClient);
+	}
+	console.log(bank.toString());
+</script>
+
+</html>

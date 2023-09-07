@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<form>
+		Місяць навчання: <input type="text" name="month" value=""> <br>
+		Оцінка: <input type="text" name="rating" value=""> <br>
+		<input type="submit" value="Надіслати">
+	</form>
+</body>
+<script>
+	class IsNotNumberError extends Error {
+		constructor() {
+			super()
+			this.message = 'Має бути числом'
+			this.name = 'IsNotNumberError'
+		}
+	}
+	class IsNotInValidRangeError extends Error {
+		constructor(min, max) {
+			super()
+			this.message = `Повинно бути від ${min} до ${max}`
+			this.name = 'IsNotInValidRangeError'
+		}
+	}
+
+	class CanNotImproveError extends Error {
+		constructor() {
+			super()
+			this.message = "Неможливо виправити оцінку, це не останній місяць у семестрі"
+			this.name = 'CanNotImproveError'
+		}
+	}
+
+	//----------------------
+	function validate() {
+		try {
+			let month = parseInt(document.forms[0].elements[0].value, 10);
+			if (isNaN(month)) throw new IsNotNumberError();
+			if (month < 1 || month > 12) throw new IsNotInValidRangeError(1, 12);
+			if (month >= 6 && month <= 8) throw new CanNotImproveError();
+
+			let rating = parseInt(document.forms[0].elements[1].value, 10);
+			if (isNaN(rating)) throw new IsNotNumberError();
+			if (rating < 1 || rating > 100) throw new IsNotInValidRangeError(1, 100);
+
+			if (month !== 12 && rating < 50) {
+				throw new CanNotImproveError();
+			}
+		} catch (err) {
+			if (err instanceof IsNotNumberError) {
+				console.log(err.message + ' Пишіть тільки числа');
+			} else if (err instanceof IsNotInValidRangeError) {
+				console.log(err.message);
+			} else if (err instanceof CanNotImproveError) {
+				console.log(err.message);
+			} else {
+				console.log(err.message);
+			}
+			return false;
+		}
+		return true;
+	}
+
+	window.onload = function () {
+		document.forms[0].onsubmit = validate;
+	};
+</script>
+
+</html>

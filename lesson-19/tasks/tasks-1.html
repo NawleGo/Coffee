@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<div id="container">
+
+	</div>
+</body>
+<script>
+	class Client {
+		constructor(idClient, fullName, countMoney) {
+			this.idClient = idClient
+			this.fullName = fullName
+			this.countMoney = countMoney
+		}
+		addMoney(newMoney) {
+			return this.countMoney += newMoney
+		}
+		withdrawalMoney(oldMoney) {
+			return this.countMoney -= oldMoney
+		}
+		toString() {
+			return `ІД клієнта: ${this.idClient}, ПІБ: ${this.fullName}, Кілкість коштів: ${this.countMoney} `
+		}
+	}
+	class GoldenClient extends Client {
+		constructor(creditLimit, percent) {
+			super(500, 'Іванов Іван Іванович', 4000)
+			this.creditLimit = creditLimit
+			this.percent = percent
+		}
+		getFine(creditUse) {
+			return this.creditLimit -= (creditUse + (creditUse / 100 * this.percent))
+		}
+		toString() {
+			return `${super.toString()}, Кредитний ліміт: ${this.creditLimit}, Відсоток: ${this.percent}`;
+		}
+	}
+	const showMessage = new GoldenClient(5000, 5)
+	document.write(showMessage.toString())
+
+
+</script>
+
+</html>
