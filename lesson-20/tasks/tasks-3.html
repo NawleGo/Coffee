@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>
+		Користувач вводить дату народження. Визначити, скільки йому повних років.
+	</h1>
+	<div id="container">
+		Введіть дату народження:
+		<input id="inp" type="number">
+	</div>
+</body>
+<script>
+	const data = new Date();
+	const value = document.getElementById('inp');
+
+	function text(currentYear) {
+		const div = document.createElement('div');
+		div.innerText = currentYear;
+		document.querySelector('#container').append(div);
+	}
+
+	value.onchange = () => {
+		const newYear = data.getFullYear() - parseInt(value.value); 
+		text(newYear);
+	};
+</script>
+
+</html>

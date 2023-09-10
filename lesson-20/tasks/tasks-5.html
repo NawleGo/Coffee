@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<div id="container">
+	</div>
+	<button>Результат</button>
+</body>
+<script>
+	//Задаємо користувачу задачу з додавання двох чисел. Визначити скільки секунд було використано для розв’язання
+	//задачі.
+	const randomNumber1 = 1 + Math.floor(Math.random() * 100)
+	const randomNumber2 = 1 + Math.floor(Math.random() * 100)
+	const firstNum = randomNumber1
+	const secondNum = randomNumber2
+	const sum = firstNum + secondNum
+	container.innerText = `Яка буде сума: ${firstNum} + ${secondNum} ? `
+	const inp = document.createElement('input')
+	container.append(inp)
+	const btn = document.querySelector('button')
+	const data = new Date()
+	function result() {
+		if (sum === parseInt(inp.value)) {
+			const data1 = new Date()
+			const time = (data1 - data) / 1000
+			alert(`Вірно на це у вас пішло ${time} секунд`)
+
+		} else alert('Не вірно')
+	}
+	btn.onclick = () => {
+		result()
+	}
+
+
+</script>
+
+</html>

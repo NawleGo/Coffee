@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Визначити привітання у залежності від часу доби (Доброго дня, Доброго ранку, Доброго вечора)</h1>
+</body>
+<script>
+	const date = new Date()
+	const currentDate = date.getHours()
+	if (currentDate >= 6 && currentDate < 12) alert('Добрий ранок')
+	else if (currentDate >= 12 && currentDate < 17) alert('Добрий день')
+	else if (currentDate >= 17 && currentDate < 23) alert('Добрий вечір')
+	else alert('Добрної ночі')
+	console.log(currentDate)
+</script>
+
+</html>
