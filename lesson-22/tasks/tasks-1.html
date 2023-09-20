@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Дано список з віком учнів. Підрахувати скільки разів кожне значення зустрічається у списку і максимальне.</h1>
+</body>
+<script>
+	let ageList = [12, 14, 15, 12, 13, 14, 11]
+	let set = new Set(ageList).size
+	console.log(set)
+	const maxValue = Math.max(...ageList)
+	console.log(maxValue)
+
+</script>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Дано масив книг (назва, рік видання, автор). Підрахувати кількість книг для кожного автора.</h1>
+</body>
+<script>
+	const books = [
+		{ name: 'harry potter', year: 1992, author: 'author1' },
+		{ name: 'harry potter2', year: 1994, author: 'author3' },
+		{ name: 'harry potter3', year: 1996, author: 'author2' },
+		{ name: 'harry potter4', year: 1998, author: 'author1' },
+		{ name: 'harry potter5', year: 2000, author: 'author2' }
+	];
+	const uniqueAuthors = new Set();
+	for (const book of books) {
+		uniqueAuthors.add(book.author);
+	}
+	const authorBookCount = {};
+	for (const author of uniqueAuthors) {
+		authorBookCount[author] = books.filter(book => book.author === author).length;
+	}
+	console.log(authorBookCount)
+</script>
+
+</html>

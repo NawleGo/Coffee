@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Користувач може змінювати колір фону, що вибирає користувач з використанням
+		<input id="container" type="color">.
+		Зберігати цей колір і відновлювати при наступному відкритті. Також зберігати і відображати кількість змін протягом
+		одного сеансу.
+	</h1>
+</body>
+<script>
+	const container = document.getElementById('container')
+	function colors() {
+		const color = container.value
+		document.body.style.backgroundColor = color
+		localStorage.setItem('color', color)
+	}
+	container.addEventListener('input', colors)
+
+	const saveColor = localStorage.getItem('color')
+	if (saveColor) {
+		document.body.style.backgroundColor = saveColor
+		container.value = saveColor
+	}
+</script>
+
+</html>

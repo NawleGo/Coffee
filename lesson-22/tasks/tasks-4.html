@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>. Дано масив студентів (піб, курс, факультет). Підрахувати кількість різних факультетів, та кількість студентів
+		кожного з курсів. </h1>
+</body>
+<script>
+	class Student {
+		constructor(fullName, course, faculty) {
+			this.fullName = fullName;
+			this.course = course;
+			this.faculty = faculty;
+		}
+	}
+	const students = [
+		new Student('Мельник Микола Миколайович', 2, 'Економіки'),
+		new Student('Іванов Іван Іванович', 3, 'Економіки'),
+		new Student('Кузьменко Кузьма Олегович', 2, 'Математики'),
+		new Student('Андрухович Андрій Васильович', 4, 'Фізики')
+	];
+	const faculty = new Set(students.map(
+		(el) => el.faculty
+	))
+	console.log(faculty.size);
+	const courseCounts = {};
+	students.forEach(student => {
+		if (courseCounts[student.course]) {
+			courseCounts[student.course]++;
+		} else {
+			courseCounts[student.course] = 1;
+		}
+	});
+	console.log(courseCounts);
+</script>
+
+</html>
