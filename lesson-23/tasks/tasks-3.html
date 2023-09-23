@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Створити генератор, який би випадковим чином поступово генерував вказану кількість парних чисел.</h1>
+</body>
+<script>
+	function* generateEvenNumber(count) {
+		let startNum = 0
+		for (let i = startNum; i < count;) {
+			const randomNumber = 1 + Math.floor(Math.random() * 100)
+			if (randomNumber % 2 === 0) {
+				yield randomNumber
+				i++
+			}
+		}
+	}
+	const randomEvenNumber = [...generateEvenNumber(5)]
+	console.log(randomEvenNumber)
+
+
+</script>
+
+</html>
