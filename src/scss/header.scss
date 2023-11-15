@@ -1,0 +1,194 @@
+//====================================================================================================
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+
+	background-color: rgb(207, 205, 205);
+
+	z-index: 100;
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		column-gap: 0.9375rem;
+		padding-top: 1.3125rem;
+		padding-bottom: 1.3125rem;
+		min-height: 5.5rem;
+	}
+
+	&__icon {
+		position: relative;
+		z-index: 5;
+		min-width: 6.25rem;
+		img {
+			max-width: 100%;
+		}
+	}
+
+	&__menu {
+		display: flex;
+		justify-content: center; /* Додайте цей стиль для вирівнювання горизонтально */
+		align-items: center;
+	}
+
+	&__sign {
+	}
+}
+.menu {
+	&__icon {
+	}
+
+	&__body {
+		@media (max-width: $mobile) {
+			position: fixed;
+			display: flex;
+			flex-direction: column;
+			background-color: #5a3407;
+			left: -100%;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			padding: 7.5rem 0.9375rem 2.5rem 0.9375rem;
+			overflow: auto;
+			transition: left 0.3s;
+			row-gap: 2.5rem;
+			&::after {
+				content: "";
+				position: fixed;
+				width: 100%;
+				min-height: 5.5rem;
+				top: 0;
+				left: -100%;
+				transition: left 0.3s;
+				background-color: #5a3407;
+				z-index: 2;
+			}
+			.menu-open & {
+				left: 0;
+				&::after {
+					content: "";
+					left: 0;
+				}
+			}
+		}
+	}
+
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		@include adaptiveValue("column-gap", 60, 20);
+		row-gap: 0.1875rem;
+		@media (max-width: $mobile) {
+			flex-direction: column;
+
+			align-items: center;
+			row-gap: 1.5rem;
+			flex: 1 1 auto;
+			li {
+				font-size: 1.5rem;
+			}
+		}
+	}
+
+	&__item {
+		color: #fff;
+		font-size: 0.875rem;
+		font-weight: 500;
+		line-height: 135.714286%; /* 19/14 */
+	}
+
+	&__link {
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+.icon-menu {
+}
+.sign {
+	display: flex;
+	@include adaptiveValue("column-gap", 35, 20);
+	align-items: center;
+	font-size: 0.875rem;
+	&__in {
+		color: #fff;
+		line-height: 135.714286%; /* 19/14 */
+		font-weight: 500;
+		text-decoration-line: underline;
+	}
+
+	&__btn {
+		display: inline-block;
+		border-radius: 24px;
+		background: #f9c06a;
+		box-shadow: 0px 6px 12px 0px rgba(249, 192, 106, 0.22);
+		color: #1e1e1e;
+		line-height: 135.714286%; /* 19/14 */
+		font-weight: 500;
+		@include adaptiveValue("padding-top", 15, 10);
+		@include adaptiveValue("padding-right", 27, 15);
+		@include adaptiveValue("padding-bottom", 15, 10);
+		@include adaptiveValue("padding-left", 27, 15);
+	}
+	@media (max-width: $mobile) {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 1.5rem;
+	}
+}
+
+//====================================================================================================
+
+//Burger
+.icon-menu {
+	display: none;
+	@media (max-width: $mobile) {
+		display: block;
+		position: relative;
+		width: rem(30);
+		height: rem(18);
+		z-index: 5;
+		@media (any-hover: none) {
+			cursor: default;
+		}
+		span,
+		&::before,
+		&::after {
+			content: "";
+			transition: all 0.3s ease 0s;
+			right: 0;
+			position: absolute;
+			width: 100%;
+			height: rem(2);
+			background-color: #fff;
+		}
+		&::before {
+			top: 0;
+		}
+		&::after {
+			bottom: 0;
+		}
+		span {
+			top: calc(50% - rem(1));
+		}
+		.menu-open & {
+			span {
+				width: 0;
+			}
+			&::before,
+			&::after {
+			}
+			&::before {
+				top: calc(50% - rem(1));
+				transform: rotate(-45deg);
+			}
+			&::after {
+				bottom: calc(50% - rem(1));
+				transform: rotate(45deg);
+			}
+		}
+	}
+}
